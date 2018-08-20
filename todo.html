@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head>
+    <title>To-Do App</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" />
+    <link rel="stylesheet" type="text/css" href="style.css" />	
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/ngAlertify.js"></script>
+    <script src="todo.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</head>
+<body>		
+
+    <header>
+        <h1>Driver 750 Job for Today<small></small></h1>
+        <p><i class="fa fa-magic"></i> A simple <strong>to do</strong> list application <small>created by Aj</small></p>
+    </header>
+    <div id="container" ng-controller="main">
+        <h2 class="js-toggler" data-target="main">
+            <i class="fa fa-navicon"></i> Job list
+        </h2>
+        
+        <div class="main js-main">
+            <div class="todo-count">
+                <span># Items: <strong>{{todos.length}}</strong></span>
+            </div>
+            <div class="todo-list">
+                <div class="inner">
+                <div class="item" ng-repeat="todo in todos">
+                    <div class="inner done-{{todo.done}}">
+                        <div class="status">
+                            <input type="checkbox" ng-model="todo.done" />
+                        </div>
+                        <div class="text">
+                            <p>{{todo.text}}</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="options">
+                            <span ng-click="edit(todo)" class="btn-edit">
+                                <i class="fa fa-edit"></i> Edit
+                            </span>
+                            <span ng-click="remove(todo)" class="btn-remove">
+                                <i class="fa fa-remove"></i> Remove
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="todo-form">
+                <form ng-submit="add()">
+                    <div class="input-group">
+                        <input type="text" ng-model="todoInput" size="25" placeholder="Add new job..." />
+                        <button>
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="dev-notes js-dev-notes hidden">
+        <h3># Dev Notes</h3>
+        <i class="fa fa-tick"></i> No Issues.
+    </div>
+
+    <footer>
+        Copyrights &copy; <strong>Anoj</strong>, 2018<br />
+        <a href="https://github.com/webtechanoj" target="_blank">
+            <i class="fa fa-github big"></i> GitHub
+        </a>
+        |
+        <a href="https://twitter.com/webtechanoj" target="_blank">
+            <i class="fa fa-twitter big"></i> Twitter
+        </a><br /><br />
+        Created via <strong class="js-toggle" data-target="dev-notes">AngularJS<sup>&reg;</sup></strong>
+    </footer>
+
+</body>
+</html>
